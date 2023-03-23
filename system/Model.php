@@ -27,8 +27,6 @@ self::$db = $client->db_real_contact;
  }
  public static function GetContactByIdString($idString)
  {
-  
-  
   $collection = self::$db->contacts;
   
   $filter = self::CreateFilterByIdString($idString);
@@ -42,6 +40,15 @@ self::$db = $client->db_real_contact;
    return $collection->updateOne($filter, ['$set' => $data]);
  }
  
+  public static function DeleteContactByIdString($idString)
+  {
+   $collection = self::$db->contacts;
+   
+   $filter = self::CreateFilterByIdString($idString);
+   return $collection->deleteOne($filter);
+   
+  }
+  
  private static function CreateFilterByIdString($idString) 
  {
   $objectId = new MongoDB\BSON\ObjectId();

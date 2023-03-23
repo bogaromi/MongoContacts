@@ -17,7 +17,8 @@
 
         <h1>Mongo Contacts</h1>
         <p>Kapcsolatok és elérhetőségek szerkesztése</p>
-<section>
+        <!-- 
+        <section>
 
 <div class="bg-secondary p-3 mb-3">
 Ez egy külön kis doboz
@@ -26,8 +27,6 @@ Ez egy külön kis doboz
 <button class="btn btn-primary">Ez egy gomb</button>
 
 </section>
-
+ -->
         
-    </main>
-</body>
-</html>
+    
