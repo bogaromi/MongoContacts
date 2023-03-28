@@ -6,7 +6,7 @@
    echo '<section class="p-4 bg-white shadow mb-4">';
    echo '<table class="table table-striped table-hover">';
    echo '<thead><tr>';
-   echo '<th>Megnevezés</th><th>E-mail</th><th>Telefon</th>';
+   echo '<th>Megnevezés</th><th>E-mail</th><th>Telefon</th><th> </th>';
    echo '</tr></thead><tbody>';
    
    foreach ($item as $obj)
@@ -36,11 +36,13 @@
     {    
      $phone = $obj['phonenumber'];
     }
-    
+     $id = $obj['_id']->serialize();
+     
     echo '<tr>';
     echo '<td>'. $name .'</td>';
     echo '<td>'. $email . '</td>';
     echo '<td>'. $phone . '</td>';
+    echo '<td><a href=\'?details='. $id .'\' class="h5" title="Részletek"><i class="fa-solid fa-file-lines"></i></a></td>';
     echo '</tr>';
    }
    
@@ -50,6 +52,7 @@
   public static function CreationForm()
   {
      echo '<section class="p-4 bg-white shadow mb-4">';
+     echo '<h3 class="mb-4">Új kapcsolat hozzáadása</h3>';
      echo '<form method="post" action="">';
      
      echo self::CreateInput("Vezetéknév", "firstname");
@@ -62,7 +65,19 @@
      echo '</form>';
      echo '</section>';
   }
-  
+  public static function ShowDetails($contact)
+  {
+        echo '<section class="p-4 bg-white shadow mb-4">';
+		echo '<h3 class="mb-4">Részletes adatok</h3>';
+		echo '<table class="table"><tbody>';
+		
+		//var_dump($contact);
+		echo '<tr><td><strong>Vezetéknév</strong></td>';
+		echo '<td class="display-6">Kovács</td></tr>';
+		
+		echo '</tbody></table>';
+		echo '</section>';
+  }
   private static function CreateInput($text, $name) 
   {
     $html = '<div class="mb-3">';

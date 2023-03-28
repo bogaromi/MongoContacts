@@ -16,11 +16,19 @@ class Req
      {
       $data[$key] = $value;
      }
-     
-     
+         
     }
     
     return $data;
+  }
+  
+  public static function ContactDetailsRequest()
+  {
+   if(isset($_GET["details"]))
+    {
+     return $_GET["details"];
+    }
+   return null;
   }
 }
 

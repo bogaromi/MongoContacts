@@ -30,7 +30,7 @@ self::$db = $client->db_real_contact;
   $collection = self::$db->contacts;
   
   $filter = self::CreateFilterByIdString($idString);
-  $item = $collection->find(['id' => $objectId]);
+  $item = $collection->findOne($filter);
   return $item;
  }
  public static function UpdateContact($idString, $data)

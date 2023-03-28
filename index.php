@@ -10,6 +10,13 @@ require_once 'system/views/begin.php';
 
 Model::Init();
 
+$details = Req::ContactDetailsRequest();
+if($details)
+{
+  $details = Model::GetContactByIdString($details);
+  View::ShowDetails($details);
+}
+
 if(Req::NewContactSubmitted())
 {
   $contact = Req::GetContactPostData();
