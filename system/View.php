@@ -60,7 +60,9 @@
      echo self::CreateInput("E-mail", "email");
      echo self::CreateInput("Telefon", "phonenumber");
      
-     echo'<button class="btn btn-primary" name="newSent" action="index.php"><i class="fa-solid fa-check"></i>Kapcsolat létrehozása</button>';
+     echo '<div id="formDynamic"></div>';
+     echo'<button class="btn btn-primary" name="newSent"><i class="fa-solid fa-check"></i>Kapcsolat létrehozása</button>';
+     echo'<button class="btn btn-secondary" id="addRow" style="float:right"><i class="fa-solid fa-plus"></i>További adat</button>';
      
      echo '</form>';
      echo '</section>';
