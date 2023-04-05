@@ -13,8 +13,12 @@ self::$db = $client->db_real_contact;
  }
  public static function InsertContact($contact)
  {
-  $collection = self::$db->contacts;
-  $collection->insertOne($contact);
+  if($contact)
+  {
+   $collection = self::$db->contacts;
+   $collection->insertOne($contact);
+  }
+  
  }
  public static function SelectContacts()
  {

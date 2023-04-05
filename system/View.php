@@ -60,23 +60,10 @@
      echo self::CreateInput("E-mail", "email");
      echo self::CreateInput("Telefon", "phonenumber");
      
-     echo'<button class="btn btn-primary" name="newSent"><i class="fa-solid fa-check"></i>Hozzáadás</button>';
+     echo'<button class="btn btn-primary" name="newSent" action="index.php"><i class="fa-solid fa-check"></i>Kapcsolat létrehozása</button>';
      
      echo '</form>';
      echo '</section>';
-  }
-  public static function ShowDetails($contact)
-  {
-        echo '<section class="p-4 bg-white shadow mb-4">';
-		echo '<h3 class="mb-4">Részletes adatok</h3>';
-		echo '<table class="table"><tbody>';
-		
-		//var_dump($contact);
-		echo '<tr><td><strong>Vezetéknév</strong></td>';
-		echo '<td class="display-6">Kovács</td></tr>';
-		
-		echo '</tbody></table>';
-		echo '</section>';
   }
   private static function CreateInput($text, $name) 
   {
@@ -87,6 +74,34 @@
     
     return $html;
   }
+  
+  public static function ShowDetails($contact)
+  {  //var_dump($contact);
+        echo '<section class="p-4 bg-white shadow mb-4">';
+		echo '<h3 class="mb-4">Részletes adatok</h3>';
+		echo '<table class="table"><tbody>';
+		
+		echo self::DetailsItem("Vezetéknév", $contact, "firstname");
+		echo self::DetailsItem("Keresztnév", $contact, "lastname");
+		echo self::DetailsItem("E-mail", $contact, "email");
+		echo self::DetailsItem("Telefonszám", $contact, "phonenumber");
+		
+		echo '</tbody></table>';
+		echo '</section>';
+  }
+  
+   private static function DetailsItem($title, $contact, $key) 
+   {
+        $html = '';
+        if(isset($contact[$key]))
+        {
+         $html .= '<tr><td><strong>'. $title .'</strong></td>';
+         $html .= '<td class="display-6">'. $contact[$key] .'</td></tr>';
+        }
+        
+        
+        return $html;
+   }
   
  }
 
