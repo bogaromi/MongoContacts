@@ -85,8 +85,12 @@
 		
 		echo self::DetailsItem("Vezetéknév", $contact, "firstname");
 		echo self::DetailsItem("Keresztnév", $contact, "lastname");
+		echo self::DetailsItem("Becenév", $contact, "nickname");
+		echo self::DetailsItem("Kinevezés", $contact, "title");
 		echo self::DetailsItem("E-mail", $contact, "email");
 		echo self::DetailsItem("Telefonszám", $contact, "phonenumber");
+		echo self::DetailsItem("Facebook profil", $contact, "facebook");
+		echo self::DetailsItem("Instagram fiók", $contact, "instagram");
 		
 		echo '</tbody></table>';
 		echo '</section>';
