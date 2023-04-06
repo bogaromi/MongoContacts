@@ -12,9 +12,17 @@
    foreach ($item as $obj)
    {
     $name = "";
+    if(isset($obj['title']))
+    {
+     $name = $obj['title'];
+    }
     if(isset($obj['firstname']))
     {
-     $name = $obj['firstname'];
+     if($name)
+      {      
+       $name .=" ";     
+      }
+     $name .= $obj['firstname'];
     }
     if(isset($obj['lastname']))
     {
@@ -30,11 +38,20 @@
     {    
      $email = $obj['email'];
     }
+    if(isset($obj['emails']))
+    {    
+     $email = $obj['emails'][0];
+    }
+    
     
     $phone = "-";
     if(isset($obj['phonenumber']))
     {    
      $phone = $obj['phonenumber'];
+    }
+    if(isset($obj['phonenumbers']))
+    {    
+     $phone = $obj['phonenumbers'][0];
     }
      $id = $obj['_id']->serialize();
      
@@ -109,7 +126,7 @@
          if(is_object($value))
          {
           $value = $value->getArrayCopy();
-          $value = '<ul class="list-group  list-group-numbered"><li class="list-group-item">' . implode('</li><li class="list-group-item">', $value) . '</li></ul>';
+          $value = '<ul><li class="list-item">' . implode('</li><li class="list-item">', $value) . '</li></ul>';
          }
          $html .= '<tr><td><strong>'. $title .'</strong></td>';
          $html .= '<td class="display-6">'. $value .'</td></tr>';
