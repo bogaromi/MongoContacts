@@ -88,7 +88,10 @@
 		echo self::DetailsItem("Becenév", $contact, "nickname");
 		echo self::DetailsItem("Kinevezés", $contact, "title");
 		echo self::DetailsItem("E-mail", $contact, "email");
+		echo self::DetailsItem("E-mail címek", $contact, "emails");
 		echo self::DetailsItem("Telefonszám", $contact, "phonenumber");
+		echo self::DetailsItem("Telefonszámok", $contact, "phonenumbers");
+		echo self::DetailsItem("Cím", $contact, "adress");
 		echo self::DetailsItem("Facebook profil", $contact, "facebook");
 		echo self::DetailsItem("Instagram fiók", $contact, "instagram");
 		
@@ -101,8 +104,15 @@
         $html = '';
         if(isset($contact[$key]))
         {
+         $value = $contact[$key];
+         
+         if(is_object($value))
+         {
+          $value = $value->getArrayCopy();
+          $value = '<ul class="list-group  list-group-numbered"><li class="list-group-item">' . implode('</li><li class="list-group-item">', $value) . '</li></ul>';
+         }
          $html .= '<tr><td><strong>'. $title .'</strong></td>';
-         $html .= '<td class="display-6">'. $contact[$key] .'</td></tr>';
+         $html .= '<td class="display-6">'. $value .'</td></tr>';
         }
         
         

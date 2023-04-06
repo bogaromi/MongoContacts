@@ -18,7 +18,20 @@ class Req
      }
          
     }
+     
+    if(isset($data["phonenumber"]) && isset($data["phonenumbers"]))
+    {
+     array_unshift($data["phonenumbers"], $data["phonenumber"]);
+      
+       unset($data["phonenumber"]);
+    }
     
+    if(isset($data["email"]) && isset($data["emails"]))
+    {
+     array_unshift($data["emails"], $data["email"]);
+  
+       unset($data["email"]);
+    }
     return $data;
   }
   
